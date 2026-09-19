@@ -40,3 +40,4 @@ Flujo esperado: `FullCalendar -> API -> Service -> Eloquent -> MySQL`.
 - La persistencia funcional se implementara en una fase posterior con MySQL dentro de Docker. SQLite no es una alternativa para el modulo final.
 - La disponibilidad se resuelve en `DisponibilidadCitaService`; `CitaService` bloquea la fila del doctor dentro de una transaccion antes de consultar e insertar o actualizar, reduciendo carreras entre solicitudes simultaneas del mismo doctor.
 - Los Form Requests validan estructura; los servicios validan disponibilidad y transiciones de negocio.
+- La presentacion FullCalendar obtiene eventos por HTTP desde la API, transforma solo la representacion visual y devuelve las mutaciones al backend. No replica reglas de disponibilidad ni usa almacenamiento local como fuente de datos.
