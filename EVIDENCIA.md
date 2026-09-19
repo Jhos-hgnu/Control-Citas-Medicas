@@ -113,3 +113,21 @@ La persistencia se comprobo mediante GET posterior a POST, PUT y PATCH. Las prue
 
 - Requests y respuestas de la API.
 - Suite de pruebas API.
+
+# Feature 3 - Validación de conflictos y estados
+
+## Rama y reglas
+
+Rama: `feature/validacion-conflictos-estados`. Cubre RQF-03, RQF-05, RQNF-03, RQNF-04 y RQNF-07. Una cita activa es `pendiente` o `confirmada`; el solapamiento usa `inicio < fin_existente AND fin > inicio_existente`. Las citas canceladas y atendidas se conservan, pero no bloquean disponibilidad.
+
+`CitaService` abre una transaccion, bloquea con `lockForUpdate()` la fila del doctor y consulta `DisponibilidadCitaService`. El bloqueo se libera al cerrar la transaccion y serializa operaciones concurrentes sobre el mismo doctor.
+
+## Estados
+
+`pendiente` permite `confirmada` y `cancelada`; `confirmada` permite `atendida` y `cancelada`; `cancelada` y `atendida` son terminales. Repetir el mismo estado es idempotente. Transiciones o reprogramaciones terminales devuelven `409`.
+
+## Evidencia real
+
+Con MySQL Docker y Laravel local, se creo una cita valida, se intento un POST solapado y se obtuvo `POST status: 409`. Tras cancelarla se creo una nueva cita en el mismo horario. Intentar `cancelada -> confirmada` devolvio `PATCH status: 409`.
+
+La suite contra `citas_medicas_testing` paso con conflictos, estados y API existentes; no utiliza SQLite.
