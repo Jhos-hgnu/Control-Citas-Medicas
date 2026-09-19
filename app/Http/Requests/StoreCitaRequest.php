@@ -1,0 +1,18 @@
+<?php
+
+namespace App\Http\Requests;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class StoreCitaRequest extends FormRequest
+{
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+    public function rules(): array
+    {
+        return ['paciente_id' => ['required', 'integer', 'exists:pacientes,id'], 'doctor_id' => ['required', 'integer', 'exists:doctores,id'], 'inicio' => ['required', 'date'], 'fin' => ['required', 'date', 'after:inicio'], 'motivo' => ['required', 'string', 'max:1000']];
+    }
+}

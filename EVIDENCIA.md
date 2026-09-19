@@ -90,3 +90,26 @@ No se utilizo `-v`. Despues del reinicio, Laravel continuo leyendo 3 pacientes, 
 - Salida de `docker compose ps`.
 - Migraciones ejecutadas.
 - Datos semilla presentes.
+
+# Feature 2 - API REST de citas
+
+## Rama y alcance
+
+Rama: `feature/api-rest-citas`. Cubre RQF-01, RQF-05, RQF-06, RQF-07, RQF-08, RQNF-03 y RQNF-04 mediante controllers API, Form Requests, `CitaService`, Resources y MySQL Docker.
+
+Endpoints: `GET/POST /api/citas`, `GET/PUT /api/citas/{cita}`, `PATCH /api/citas/{cita}/estado`, `GET /api/doctores` y `GET /api/pacientes`.
+
+## Evidencia real
+
+Con Laravel servido localmente y MySQL Docker activo, se consultaron los catalogos, se creo la cita `id: 4`, se reprogramo y se cambio a `confirmada`. El GET posterior devolvio:
+
+```json
+{"id":4,"inicio":"2026-10-15T15:00:00+00:00","fin":"2026-10-15T15:30:00+00:00","motivo":"Consulta API reprogramada","estado":"confirmada"}
+```
+
+La persistencia se comprobo mediante GET posterior a POST, PUT y PATCH. Las pruebas automatizadas usan la base aislada `citas_medicas_testing` en el mismo MySQL Docker; no usan SQLite.
+
+## Capturas pendientes de adjuntar
+
+- Requests y respuestas de la API.
+- Suite de pruebas API.
