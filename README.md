@@ -104,7 +104,7 @@ La interfaz en `/citas` usa FullCalendar con la API REST y MySQL Docker como fue
 
 ## Arquitectura y evidencia
 
-La arquitectura prevista esta documentada en [docs/ARQUITECTURA.md](docs/ARQUITECTURA.md). Las restricciones del examen estan en [docs/REGLAS_EXAMEN.md](docs/REGLAS_EXAMEN.md) y la evidencia de esta feature en [EVIDENCIA.md](EVIDENCIA.md).
+La arquitectura prevista esta documentada en [docs/ARQUITECTURA.md](docs/ARQUITECTURA.md). Las restricciones del examen estan en [docs/REGLAS_EXAMEN.md](docs/REGLAS_EXAMEN.md), la evidencia escrita en [EVIDENCIA.md](EVIDENCIA.md) y las [capturas visuales en Google Drive](https://drive.google.com/drive/folders/1snO23LupPrZ7MGMfv7og9GHg3U6DLX5o?usp=drive_link).
 
 ## Estrategia Git
 
