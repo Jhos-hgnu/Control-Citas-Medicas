@@ -7,6 +7,7 @@
         <p class="eyebrow">Administracion clinica</p>
         <h1 id="page-title">Control de Citas Medicas</h1>
         <p class="hero-description">Sistema de gestion y programacion de citas.</p>
+        <a class="primary-link" href="{{ route('appointments.index') }}">Abrir calendario de citas</a>
     </section>
 
     <section class="status-card" aria-labelledby="status-title">
