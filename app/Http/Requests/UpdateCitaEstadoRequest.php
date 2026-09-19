@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Enums\EstadoCita;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateCitaEstadoRequest extends FormRequest
 {
@@ -13,6 +15,6 @@ class UpdateCitaEstadoRequest extends FormRequest
 
     public function rules(): array
     {
-        return ['estado' => ['required', 'in:pendiente,confirmada,cancelada,atendida']];
+        return ['estado' => ['required', Rule::enum(EstadoCita::class)]];
     }
 }
