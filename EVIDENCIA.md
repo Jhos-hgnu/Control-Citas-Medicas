@@ -1,3 +1,9 @@
+# Evidencias del Proyecto
+
+## Evidencias visuales
+
+Las capturas de pantalla y demostraciones del proyecto estan disponibles en [Google Drive - Evidencias del Sistema de Control de Citas Medicas](https://drive.google.com/drive/folders/1snO23LupPrZ7MGMfv7og9GHg3U6DLX5o?usp=drive_link).
+
 # Feature 1 - Docker + MySQL + Schema
 
 ## Rama
