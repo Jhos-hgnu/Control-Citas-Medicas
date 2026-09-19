@@ -38,3 +38,5 @@ Flujo esperado: `FullCalendar -> API -> Service -> Eloquent -> MySQL`.
 - Las fechas se manejaran con Carbon y casts de Laravel.
 - Las operaciones futuras que modifiquen varios datos relacionados evaluaran `DB::transaction()` solo cuando sea necesario.
 - La persistencia funcional se implementara en una fase posterior con MySQL dentro de Docker. SQLite no es una alternativa para el modulo final.
+- La disponibilidad se resuelve en `DisponibilidadCitaService`; `CitaService` bloquea la fila del doctor dentro de una transaccion antes de consultar e insertar o actualizar, reduciendo carreras entre solicitudes simultaneas del mismo doctor.
+- Los Form Requests validan estructura; los servicios validan disponibilidad y transiciones de negocio.
