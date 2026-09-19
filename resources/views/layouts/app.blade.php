@@ -10,9 +10,10 @@
     <body>
         <div class="site-shell">
             <header class="site-header">
-                <a class="brand" href="{{ url('/') }}">Control de Citas Medicas</a>
-                <nav aria-label="Navegacion principal">
-                    <a href="{{ url('/') }}">Inicio</a>
+                    <a class="brand" href="{{ url('/') }}">Control de Citas Medicas</a>
+                    <nav aria-label="Navegacion principal">
+                        <a href="{{ url('/') }}">Inicio</a>
+                        <a href="{{ route('appointments.index') }}">Calendario de citas</a>
                 </nav>
             </header>
 
