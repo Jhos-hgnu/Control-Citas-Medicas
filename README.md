@@ -92,7 +92,11 @@ Las claves foraneas de citas restringen el borrado de pacientes y doctores para 
 - `GET /`: pantalla inicial tecnica.
 - `GET /api/health`: endpoint tecnico que responde `{"status":"ok"}`.
 
-No existen todavia endpoints funcionales de citas, pacientes o doctores.
+Los endpoints funcionales de citas, pacientes y doctores se exponen exclusivamente bajo `/api`.
+
+## API
+
+La API REST de citas, pacientes y doctores esta documentada en [docs/API.md](docs/API.md). La deteccion de conflictos de horario se implementara en una feature posterior.
 
 ## Arquitectura y evidencia
 
