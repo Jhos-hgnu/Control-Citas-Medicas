@@ -131,3 +131,33 @@ Rama: `feature/validacion-conflictos-estados`. Cubre RQF-03, RQF-05, RQNF-03, RQ
 Con MySQL Docker y Laravel local, se creo una cita valida, se intento un POST solapado y se obtuvo `POST status: 409`. Tras cancelarla se creo una nueva cita en el mismo horario. Intentar `cancelada -> confirmada` devolvio `PATCH status: 409`.
 
 La suite contra `citas_medicas_testing` paso con conflictos, estados y API existentes; no utiliza SQLite.
+
+# Feature 4 - FullCalendar UI
+
+## Rama e integracion
+
+Rama: `feature/fullcalendar-ui`. La ruta `/citas` usa `@fullcalendar/core`, `@fullcalendar/daygrid`, `@fullcalendar/timegrid` y `@fullcalendar/interaction` instalados mediante npm.
+
+FullCalendar solicita `GET /api/citas` usando el rango visible `desde` y `hasta`; el filtro carga doctores desde `GET /api/doctores`. Pacientes y doctores del formulario provienen de los endpoints de catalogo. POST, PUT y PATCH se envian a la API real y refrescan eventos desde el servidor.
+
+## Comportamiento
+
+- Vistas: mes y semana, con navegacion y hoy.
+- Creacion: seleccion de rango o boton Nueva cita, POST real y refresco.
+- Detalle: `GET /api/citas/{id}` al hacer clic.
+- Estados: PATCH real, acciones visibles segun estado y colores centralizados.
+- Reprogramacion: drag/drop y resize usan PUT. Ante 409, 422 o red se ejecuta `revert()`.
+- Terminales: canceladas y atendidas no son arrastrables; el backend conserva la proteccion definitiva.
+- Timezone: FullCalendar usa `local` y consume las fechas ISO 8601 con offset sin eliminarlo manualmente.
+
+## Validaciones ejecutadas
+
+`php artisan test` paso con 18 pruebas y 62 aserciones. `npm run build` compiló el bundle FullCalendar. La pagina `/citas` se cubre mediante prueba Laravel de respuesta y contenedor.
+
+## Capturas requeridas
+
+1. Vista mensual y semanal.
+2. Formulario Nueva cita y detalle.
+3. Filtro de doctor y leyenda de estados.
+4. Drag/drop exitoso y conflicto 409 revertido.
+5. Vista tablet y Docker healthy.

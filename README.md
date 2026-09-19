@@ -96,7 +96,11 @@ Los endpoints funcionales de citas, pacientes y doctores se exponen exclusivamen
 
 ## API
 
-La API REST de citas, pacientes y doctores esta documentada en [docs/API.md](docs/API.md). La deteccion de conflictos de horario se implementara en una feature posterior.
+La API REST de citas, pacientes y doctores esta documentada en [docs/API.md](docs/API.md). Los conflictos de horario se validan en el servidor.
+
+## Calendario
+
+La interfaz en `/citas` usa FullCalendar con la API REST y MySQL Docker como fuente de datos. Inicie Docker, Laravel y Vite con `docker compose up -d`, `php artisan serve` y `npm run dev` para usarla en desarrollo.
 
 ## Arquitectura y evidencia
 
